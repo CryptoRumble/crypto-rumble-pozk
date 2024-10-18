@@ -6,9 +6,9 @@ use ark_circom::zkp::{
 };
 use input::{decode_prove_inputs};
 
-const WASM_BYTES: &[u8] = include_bytes!("../materials/crypto_rumble_30.wasm");
-const R1CS_BYTES: &[u8] = include_bytes!("../materials/crypto_rumble_30.r1cs");
-const ZKEY_BYTES: &[u8] = include_bytes!("../materials/crypto_rumble_30.zkey");
+const WASM_BYTES: &[u8] = include_bytes!("../../../materials/crypto_rumble_30.wasm");
+const R1CS_BYTES: &[u8] = include_bytes!("../../../materials/crypto_rumble_30.r1cs");
+const ZKEY_BYTES: &[u8] = include_bytes!("../../../materials/crypto_rumble_30.zkey");
 
 /// INPUT=http://localhost:9098/tasks/1 cargo run --release
 #[tokio::main]

@@ -8,7 +8,7 @@ const { ethers, upgrades, network } = require("hardhat");
 const { writeFile } = require('fs');
 
 const NAME = "CryptoRumble30Verifier";
-const ADDR = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const ADDR = "0xef1e764c386ec95ed233035661dd4269be8fd8e7"; // testnet & mainnet for POZK
 
 async function test() {
   const C = await ethers.getContractFactory(NAME);
