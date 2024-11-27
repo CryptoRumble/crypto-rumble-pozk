@@ -19,7 +19,8 @@ async function deployContractWithProxy(name, params=[]) {
 }
 
 async function deploy() {
-  const shuffle = await deployContractWithProxy("CryptoRumble30Verifier", []);
+  const c = await deployContractWithProxy("CryptoRumble30Verifier", []);
+  // opbnbtestnet: 0xbc9b4e9d43830f747e65873a5e122ddd9c9d769b
 }
 
 async function main() {

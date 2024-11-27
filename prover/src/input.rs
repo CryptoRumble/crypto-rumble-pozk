@@ -309,12 +309,18 @@ mod test {
         "##;
 
         let input: CryptoRumbleInput = serde_json::from_str(input).unwrap();
-        let (input_hex, publics_hex) = encode_prove_inputs_publics(&input);
-        std::fs::write("test_input", &input_hex).expect("Unable to create test_input file");
-        std::fs::write("test_output", &publics_hex).expect("Unable to create test_output file");
+        let (inputs_hex, publics_hex) = encode_prove_inputs_publics(&input);
+        std::fs::write("./test_miner", format!("{}\n{}", inputs_hex, publics_hex)).unwrap();
 
-        let input_hex = input_hex.trim_start_matches("0x");
-        let input_bytes = hex::decode(input_hex).expect("Unable to decode input file");
-        decode_prove_inputs(&input_bytes).expect("Unable to decode input");
+        let inputs_hex = inputs_hex.trim_start_matches("0x");
+        let publics_hex = publics_hex.trim_start_matches("0x");
+        let inputs_bytes = hex::decode(inputs_hex).expect("Unable to decode input file");
+        let publics_bytes = hex::decode(publics_hex).expect("Unable to decode input file");
+        decode_prove_inputs(&inputs_bytes).expect("Unable to decode input");
+
+        let mut bytes = (inputs_bytes.len() as u32).to_be_bytes().to_vec();
+        bytes.extend(inputs_bytes.clone());
+        bytes.extend(publics_bytes);
+        std::fs::write("./test_inputs", bytes).unwrap();
     }
 }
