@@ -86,8 +86,8 @@ contract CryptoRumble30Verifier is Initializable, OwnableUpgradeable, ERC165, IV
         return "CryptoRumble30";
     }
 
-    function permission() external view returns (bool) {
-        return false;
+    function permission(address _sender) external view returns (bool) {
+        return true;
     }
 
     /// show how to serialize/deseriaze the inputs params

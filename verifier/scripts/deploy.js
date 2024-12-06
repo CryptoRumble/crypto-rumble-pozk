@@ -7,6 +7,9 @@
 const { ethers, upgrades, network } = require("hardhat");
 const { writeFile } = require('fs');
 
+// opbnbtestnet
+const ADDR = "0xbc9b4e9d43830f747e65873a5e122ddd9c9d769b";
+
 async function deployContractWithProxy(name, params=[]) {
   const Factory = await ethers.getContractFactory(name);
   //  use upgradeable deploy, then contracts can be upgraded success, otherwise will get error about ERC 1967 proxy
@@ -20,11 +23,21 @@ async function deployContractWithProxy(name, params=[]) {
 
 async function deploy() {
   const c = await deployContractWithProxy("CryptoRumble30Verifier", []);
-  // opbnbtestnet: 0xbc9b4e9d43830f747e65873a5e122ddd9c9d769b
+}
+
+
+async function upgrade() {
+  console.log("upgrading...");
+  const C = await ethers.getContractFactory("CryptoRumble30Verifier");
+  const address = await C.attach(ADDR);
+  const Factory = await ethers.getContractFactory("CryptoRumble30Verifier");
+  await upgrades.upgradeProxy(address, Factory);
+  console.log("upgraded");
 }
 
 async function main() {
-  await deploy();
+  // await deploy();
+  await upgrade();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
