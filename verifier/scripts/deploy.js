@@ -7,8 +7,13 @@
 const { ethers, upgrades, network } = require("hardhat");
 const { writeFile } = require('fs');
 
-// opbnbtestnet
-const ADDR = "0xbc9b4e9d43830f747e65873a5e122ddd9c9d769b";
+// testnet
+const ADDR = "0x66e9CE70bb3431958e0CE352d1B5D85772E57E06";
+
+// l2testnet
+// const ADDR = "0xDd3c0D61E7A654Ff5Dc4Ade5AD5c47cB4b5e69C2";
+
+// mainnet
 
 async function deployContractWithProxy(name, params=[]) {
   const Factory = await ethers.getContractFactory(name);
@@ -25,7 +30,6 @@ async function deploy() {
   const c = await deployContractWithProxy("CryptoRumble30Verifier", []);
 }
 
-
 async function upgrade() {
   console.log("upgrading...");
   const C = await ethers.getContractFactory("CryptoRumble30Verifier");
@@ -36,8 +40,8 @@ async function upgrade() {
 }
 
 async function main() {
-  // await deploy();
-  await upgrade();
+  await deploy();
+  // await upgrade();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
