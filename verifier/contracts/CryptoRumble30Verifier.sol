@@ -102,6 +102,10 @@ contract CryptoRumble30Verifier is Initializable, OwnableUpgradeable, ERC165, IV
         return "uint256[13]";
     }
 
+    function types() external pure returns (string memory) {
+        return "zk";
+    }
+
     function verify(bytes calldata publics, bytes calldata proof) external view returns (bool) {
         uint[13] memory _pubSignals = abi.decode(publics, (uint[13]));
         (uint[2] memory _pA, uint[2][2] memory _pB, uint[2] memory _pC) = abi.decode(proof, (uint[2], uint[2][2], uint[2]));
