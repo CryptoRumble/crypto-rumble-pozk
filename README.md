@@ -1,5 +1,8 @@
 # crypto-rumble-pozk
 
+- PoZK testnet prover: `0x66e9CE70bb3431958e0CE352d1B5D85772E57E06`
+- PoZK mainnet prover: `Coming soon`
+
 ## Serialize (ABI encode/decode)
 - Inputs (bytes)
 ```
