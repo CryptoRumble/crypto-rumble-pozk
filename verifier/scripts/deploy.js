@@ -7,11 +7,11 @@
 const { ethers, upgrades, network } = require("hardhat");
 const { writeFile } = require('fs');
 
-// testnet
+// zytron testnet
 const ADDR = "0x66e9CE70bb3431958e0CE352d1B5D85772E57E06";
 
-// l2testnet
-// const ADDR = "0xDd3c0D61E7A654Ff5Dc4Ade5AD5c47cB4b5e69C2";
+// base sepolia
+// const ADDR = "0x6efDab245fb1905B3692C8E0C8702CEC13A17121";
 
 // mainnet
 
@@ -40,8 +40,8 @@ async function upgrade() {
 }
 
 async function main() {
-  // await deploy();
-  await upgrade();
+  await deploy();
+  // await upgrade();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
